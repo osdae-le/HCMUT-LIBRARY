@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.main-container {
+    display: flex;
+    padding: 20px;
+    background-color: #f4f4f8;
+}
+
+.sidebar {
+    width: 260px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+
+.sidebar h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar h3 .icon,
+.add-document .icon {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.add-document {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #007bff;
+    background: none;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-document:hover {
+    background-color: #f0f8ff;
+}
+
+.document-form {
+    margin-left: 300px;
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.document-form h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.document-form h2 .icon {
+    width: 24px;
+    margin-right: 8px;
+}
+
+.document-form label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+}
+
+.document-form input[type="text"],
+.document-form input[type="number"],
+.document-form input[type="file"],
+.document-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.document-form button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.document-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}

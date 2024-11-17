@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin cá nhân | HCMUT-LIBRARY</title>
+    <link rel="stylesheet" href="./assets/css/emp_header.css">
+    <link rel="stylesheet" href="./assets/css/emp_personalinfo.css">
+</head>
+<body>
+
+    <header class="header" id="header"></header>
+
+    <div class="personal-info-container">
+        <div class="personal-info-content">
+            <img src="./assets/img/emp_personalinfo_avatarmen.png" alt="Avatar" class="avatar-img">
+            <h1>TRẦN MINH HIẾU</h1>
+            <p>Nhân viên thư viện</p>
+
+            <div class="info-details">
+                <p><strong>Họ và tên:</strong> Trần Minh Hiếu</p>
+                <p><strong>CCCD:</strong> 001082946357</p>
+                <p><strong>Mã nhân viên:</strong> EM1412</p>
+                <p><strong>Ngày sinh:</strong> 28/09/1999</p>
+                <p><strong>Giới tính:</strong> Nam</p>
+                <p><strong>Địa chỉ liên lạc:</strong> Khu phố 6, P. Linh Trung, Tp. Thủ Đức, Tp. HCM</p>
+                <p><strong>Email:</strong> hieuthuhai@hcmut.edu.vn</p>
+                <p><strong>SĐT:</strong> 085.7777.999</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        async function loadHeader() {
+            const headerContainer = document.getElementById("header");
+            const response = await fetch("emp_header.html");
+            const headerHTML = await response.text();
+            headerContainer.innerHTML = headerHTML;
+        }
+        loadHeader();
+    </script>
+
+</body>
+</html>

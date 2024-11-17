@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Tài liệu | HCMUT-LIBRARY</title>
+    <link rel="stylesheet" href="./assets/css/emp_header.css">
+    <link rel="stylesheet" href="./assets/css/emp_docsdetail.css">
+</head>
+<body>
+    <header class="header" id="header"></header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>
+                <img src="./assets/img/emp_managedocs_icondanhmuc.svg" alt="Danh mục Icon" class="icon"> 
+                DANH MỤC
+            </h3>
+            <ul>
+                <li><a href="emp_managedocs.html">Tất cả</a></li>
+                <li><a href="emp_managedocs.html">Bảo dưỡng công nghiệp</a></li>
+                <li><a href="emp_managedocs.html">Cơ khí</a></li>
+                <li><a href="emp_managedocs.html">Kỹ thuật địa chất và dầu khí</a></li>
+                <li><a href="emp_managedocs.html">Điện - Điện tử</a></li>
+                <li><a href="emp_managedocs.html">Kỹ thuật giao thông</a></li>
+                <li><a href="emp_managedocs.html">Kỹ thuật hóa học</a></li>
+                <li><a href="emp_managedocs.html">Môi trường và tài nguyên</a></li>
+                <li><a href="emp_managedocs.html">Khoa học và kỹ thuật máy tính</a></li>
+                <li><a href="emp_managedocs.html">Quản lý công nghiệp</a></li>
+                <li><a href="emp_managedocs.html">Khoa học ứng dụng</a></li>
+                <li><a href="emp_managedocs.html">Công nghệ vật liệu</a></li>
+                <li><a href="emp_managedocs.html">Kỹ thuật xây dựng</a></li>
+            </ul>
+            <button class="add-document" onclick="navigateTo('add-document')">
+                <img src="./assets/img/emp_managedocs_iconthemtailieu.svg" alt="Thêm Tài Liệu Icon" class="icon"> 
+                Thêm Tài Liệu
+            </button>
+        </aside>
+
+        <section class="document-content">
+            <div class="document-detail">
+                <img src="./assets/img/emp_managedocs_book1.svg" alt="Hóa đại cương" class="document-image">
+                <div class="document-info">
+                    <h2><span class="editable" id="doc-title">Hóa đại cương - Nguyễn Đình Soa</span>
+                        <img src="./assets/img/emp_managedocs_iconchinhsua.svg" alt="Chỉnh sửa" class="edit-icon" onclick="toggleEdit('doc-title')">
+                    </h2>
+                    <p><strong>ID: </strong><span class="editable" id="doc-id">CH1003</span>
+                       <img src="./assets/img/emp_managedocs_iconchinhsua.svg" alt="Chỉnh sửa" class="edit-icon" onclick="toggleEdit('doc-id')"></p>
+                    <p><strong>Tác giả: </strong><span class="editable" id="doc-author">Nguyễn Đình Soa</span>
+                       <img src="./assets/img/emp_managedocs_iconchinhsua.svg" alt="Chỉnh sửa" class="edit-icon" onclick="toggleEdit('doc-author')"></p>
+                    <p><strong>Nhà xuất bản: </strong><span class="editable" id="doc-publisher">Đại học Quốc gia TP. Hồ Chí Minh</span>
+                       <img src="./assets/img/emp_managedocs_iconchinhsua.svg" alt="Chỉnh sửa" class="edit-icon" onclick="toggleEdit('doc-publisher')"></p>
+                    <p><strong>Năm xuất bản: </strong><span class="editable" id="doc-year">2004</span>
+                       <img src="./assets/img/emp_managedocs_iconchinhsua.svg" alt="Chỉnh sửa" class="edit-icon" onclick="toggleEdit('doc-year')"></p>
+                    <p><strong>Tình trạng: </strong><span class="status editable" id="doc-status">Sẵn có</span>
+                       <img src="./assets/img/emp_managedocs_iconchinhsua.svg" alt="Chỉnh sửa" class="edit-icon" onclick="toggleEdit('doc-status')"></p>
+                </div>
+            </div>
+
+
+            <div class="document-summary">
+                <h3>TÓM TẮT NỘI DUNG <img src="./assets/img/emp_managedocs_iconchinhsua.svg" alt="Chỉnh sửa" class="edit-icon" onclick="toggleEdit('doc-summary')"></h3>
+                <span lass="editable" id="doc-summary">
+                    <p>Giáo trình Hóa đại cương nội dung gồm 5 chương:</p>
+                    <ul>
+                        <li>Chương 1: Những khái niệm và định luật cơ sở của hóa học</li>
+                        <li>Chương 2: Cấu tạo nguyên tử</li>
+                        <li>Chương 3: Định luật tuần hoàn, hệ thống tuần hoàn các nguyên tố hóa học và cấu tạo nguyên tử</li>
+                        <li>Chương 4: Liên kết hóa học và cấu tạo phân tử</li>
+                        <li>Chương 5: Trạng thái tập hợp của các chất</li>
+                    </ul>
+                </span>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        async function loadHeader() {
+            const headerContainer = document.getElementById("header");
+            const response = await fetch("emp_header.html");
+            const headerHTML = await response.text();
+            headerContainer.innerHTML = headerHTML;
+        }
+        loadHeader();
+    </script>
+</body>
+</html>

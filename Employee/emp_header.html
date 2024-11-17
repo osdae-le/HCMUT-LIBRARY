@@ -1,0 +1,83 @@
+<div class="header-content">
+    <a href="emp_homepage.html" class="logo-link">
+        <div class="logo-section">
+            <img src="./assets/img/emp_header_logoBK.png" alt="Logo BK" class="logo">
+            <div>
+                <h1>THƯ VIỆN</h1>
+            </div>
+        </div>
+    </a>
+
+    <nav class="nav-section">
+        <a href="emp_homepage.html" onclick="navigateTo('home')">TRANG CHỦ</a>
+        <a href="emp_managedocs.html" onclick="navigateTo('manage-docs')">QUẢN LÝ TÀI LIỆU</a>
+        <a href="emp_borrow_register.html" onclick="navigateTo('borrow-return')">QUẢN LÝ MƯỢN TRẢ</a>
+    </nav>
+    
+    <div class="icon-section">
+        <img src="./assets/img/emp_header_notify.svg" alt="Notify Icon" class="icon" onclick="toggleNotification()">
+        <div class="notification-box" id="notificationBox">
+            <ul>
+                <li>Bạn đã đăng nhập vào 11:05 15/11/2024</li>
+                <li>Bạn đã đăng nhập vào 08:30 14/11/2024</li>
+                <li>Bạn đã đăng nhập vào 15:45 13/11/2024</li>
+            </ul>
+        </div>
+    
+        <img src="./assets/img/emp_header_message.svg" alt="Message Icon" class="icon" onclick="toggleMessageBox()">
+        <div class="message-box" id="messageBox">
+            <div class="message-header">Đoạn chat</div>
+            <input type="text" placeholder="Tìm kiếm..." class="search-bar">
+            <div class="message-content">
+                <div class="message-item">
+                    <img src="./assets/img/emp_HIEUTHUHAI.jpg" alt="User 1" class="message-avatar">
+                    <div class="message-text">
+                        <strong>HIEUTHUHAI</strong>
+                        <p>HIEUTHUHAI: Goodmorning yall • 19 phút</p>
+                    </div>
+                </div>
+                <div class="message-item">
+                    <img src="./assets/img/emp_negav.webp" alt="User 2" class="message-avatar">
+                    <div class="message-text">
+                        <strong>NEGAV</strong>
+                        <p>Negav: Hẹn Embes ở concert ... • 20 phút</p>
+                    </div>
+                </div>
+                <div class="message-item">
+                    <img src="./assets/img/emp_hurrykng.webp" alt="User 2" class="message-avatar">
+                    <div class="message-text">
+                        <strong>HURRYKNG</strong>
+                        <p>Hurrykng: Aloooooo cạ nhà ... • 45 phút</p>
+                    </div>
+                </div>
+
+                <div class="message-item">
+                    <img src="./assets/img/emp_manbo.webp" alt="User 2" class="message-avatar">
+                    <div class="message-text">
+                        <strong>MANBO</strong>
+                        <p>Manbo: Xem RapViet chưaaaa ... • 1 giờ</p>
+                    </div>
+                </div>
+                <div class="message-item">
+                    <img src="./assets/img/emp_kewtiie.webp" alt="User 2" class="message-avatar">
+                    <div class="message-text">
+                        <strong>KEWTIIE</strong>
+                        <p>Kewtiie: Không phải cha ... • 3 giờ</p>
+                    </div>
+                </div>              
+
+
+            </div>
+        </div>
+    
+        <div class="avatar-container">
+            <img src="./assets/img/emp_header_avatar.svg" alt="Avatar" class="icon avatar" onclick="toggleDropdown()">
+            <div class="dropdown" id="dropdownMenu">
+                <a href="emp_personalinfo.html" onclick="navigateTo('profile')">Thông tin cá nhân</a>
+                <a href="/index.html" onclick="logout()">Đăng xuất</a>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>

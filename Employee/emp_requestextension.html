@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yêu cầu gia hạn | HCMUT-LIBRARY</title>
+    <link rel="stylesheet" href="./assets/css/emp_header.css">
+    <link rel="stylesheet" href="./assets/css/emp_requestextension.css">
+</head>
+<body>
+    <header class="header" id="header"></header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>
+                <img src="./assets/img/emp_managedocs_icondanhmuc.svg" alt="Danh mục Icon" class="icon"> 
+                DANH MỤC
+            </h3>
+            <ul>
+                <li><a href="emp_borrow_register.html">Đăng ký mượn</a></li>
+                <li><a href="emp_requestextension.html">Yêu cầu gia hạn</a></li>
+                <li><a href="emp_bookreturnconfirm.html">Xác nhận trả sách</a></li>
+                <li><a href="emp_overduenotice.html">Thông báo quá hạn</a></li>
+            </ul>
+        </aside>
+
+        <section class="content">
+            <h2>YÊU CẦU GIA HẠN</h2>
+
+            <div class="loan-table-container">
+                <table class="loan-table" id="loan-table">
+                    <thead>
+                        <tr>
+                            <th>CCCD <span class="filter-icon" onclick="sortTable(0)">🔽</span></th>
+                            <th>ID sách <span class="filter-icon" onclick="sortTable(1)">🔽</span></th>
+                            <th>Tên sách <span class="filter-icon" onclick="sortTable(2)">🔽</span></th>
+                            <th>Ngày hẹn trả ban đầu <span class="filter-icon" onclick="sortTable(3, true)">🔽</span></th>
+                            <th>Ngày hẹn trả gia hạn <span class="filter-icon" onclick="sortTable(4, true)">🔽</span></th>
+                            <th>
+                                Xử lý yêu cầu
+                                <select id="filterStatus">
+                                    <option value="Tất cả">Tất cả</option>
+                                    <option value="Đã xử lý">Đã xử lý</option>
+                                    <option value="Duyệt | Từ chối">Chưa xử lý</option>
+                                </select>                                                              
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>079201200124</td>
+                            <td>MT1003</td>
+                            <td>Giải tích 1</td>
+                            <td>05/02/2024</td>
+                            <td>01/03/2024</td>
+                            <td class="status processed">Đã xử lý</td>
+                        </tr>
+                        <tr>
+                            <td>091343356418</td>
+                            <td>MT2013</td>
+                            <td>Xác suất thống kê</td>
+                            <td>12/03/2024</td>
+                            <td>11/04/2024</td>
+                            <td class="status approved-rejected">
+                                <span class="approve" onclick="processRequest(this, 'approve')">Duyệt</span> | 
+                                <span class="reject" onclick="processRequest(this, 'reject')">Từ chối</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>063789012345</td>
+                            <td>CH1003</td>
+                            <td>Hóa đại cương</td>
+                            <td>20/04/2024</td>
+                            <td>19/05/2024</td>
+                            <td class="status approved-rejected">
+                                <span class="approve" onclick="processRequest(this, 'approve')">Duyệt</span> | 
+                                <span class="reject" onclick="processRequest(this, 'reject')">Từ chối</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>035456789012</td>
+                            <td>PH1007</td>
+                            <td>Thí nghiệm vật lý</td>
+                            <td>03/05/2024</td>
+                            <td>01/06/2024</td>
+                            <td class="status approved-rejected">
+                                <span class="approve" onclick="processRequest(this, 'approve')">Duyệt</span> | 
+                                <span class="reject" onclick="processRequest(this, 'reject')">Từ chối</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>098765432109</td>
+                            <td>SP1035</td>
+                            <td>Chủ nghĩa xã hội khoa học</td>
+                            <td>11/06/2024</td>
+                            <td>14/08/2024</td>
+                            <td class="status processed">Đã xử lý</td>
+                        </tr>
+                        <tr>
+                            <td>052345678901</td>
+                            <td>IM1025</td>
+                            <td>Quản lý dự án cho kỹ sư</td>
+                            <td>23/08/2024</td>
+                            <td>22/09/2024</td>
+                            <td class="status approved-rejected">
+                                <span class="approve" onclick="processRequest(this, 'approve')">Duyệt</span> | 
+                                <span class="reject" onclick="processRequest(this, 'reject')">Từ chối</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>089012302137</td>
+                            <td>CO2013</td>
+                            <td>Hệ cơ sở dữ liệu</td>
+                            <td>30/09/2024</td>
+                            <td>29/10/2024</td>
+                            <td class="status approved-rejected">
+                                <span class="approve" onclick="processRequest(this, 'approve')">Duyệt</span> | 
+                                <span class="reject" onclick="processRequest(this, 'reject')">Từ chối</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>098033432346</td>
+                            <td>CO3001</td>
+                            <td>Công nghệ phần mềm</td>
+                            <td>15/07/2024</td>
+                            <td>13/09/2024</td>
+                            <td class="status processed">Đã xử lý</td>
+                        </tr>
+                        <tr>
+                            <td>089012345678</td>
+                            <td>AS3077</td>
+                            <td>Cơ sở vật lý sợi quang học và ứng dụng</td>
+                            <td>18/08/2024</td>
+                            <td>28/08/2024</td>
+                            <td class="status approved-rejected">
+                                <span class="approve" onclick="processRequest(this, 'approve')">Duyệt</span> | 
+                                <span class="reject" onclick="processRequest(this, 'reject')">Từ chối</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>090123456789</td>
+                            <td>TR3077</td>
+                            <td>Thí nghiệm kỹ thuật hàng không 1</td>
+                            <td>14/12/2024</td>
+                            <td>26/12/2024</td>
+                            <td class="status approved-rejected">
+                                <span class="approve" onclick="processRequest(this, 'approve')">Duyệt</span> | 
+                                <span class="reject" onclick="processRequest(this, 'reject')">Từ chối</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>078901234567</td>
+                            <td>ME3005</td>
+                            <td>Thiết kế hệ thống cơ điện tử</td>
+                            <td>10/07/2024</td>
+                            <td>09/08/2024</td>
+                            <td class="status approved-rejected">
+                                <span class="approve" onclick="processRequest(this, 'approve')">Duyệt</span> | 
+                                <span class="reject" onclick="processRequest(this, 'reject')">Từ chối</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>093456789012</td>
+                            <td>EE2009</td>
+                            <td>Hệ thống máy tính và ngôn ngữ lập trình</td>
+                            <td>06/12/2024</td>
+                            <td>10/01/2025</td>
+                            <td class="status approved-rejected">
+                                <span class="approve" onclick="processRequest(this, 'approve')">Duyệt</span> | 
+                                <span class="reject" onclick="processRequest(this, 'reject')">Từ chối</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        async function loadHeader() {
+            const headerContainer = document.getElementById("header");
+            const response = await fetch("emp_header.html");
+            const headerHTML = await response.text();
+            headerContainer.innerHTML = headerHTML;
+        }
+        loadHeader();
+
+        // Biến lưu trạng thái sắp xếp của từng cột
+        const sortStates = [true, true, true, true, true]; // True = A-Z, False = Z-A
+
+        // Hàm lọc trạng thái "Xử lý yêu cầu"
+        function filterTableByStatus() {
+            const filterValue = document.getElementById("filterStatus").value;
+            const rows = document.querySelectorAll(".loan-table tbody tr");
+
+            rows.forEach(row => {
+                const statusCell = row.cells[5]; // Ô chứa trạng thái "Xử lý yêu cầu"
+                const cellContent = statusCell.textContent.trim(); // Đoạn text hoàn chỉnh của ô
+                const hasApproveReject = statusCell.querySelector(".approve") && statusCell.querySelector(".reject"); // Kiểm tra xem có chứa "Duyệt" và "Từ chối" không
+
+                // Kiểm tra điều kiện lọc
+                if (filterValue === "Tất cả" ||
+                    (filterValue === "Đã xử lý" && cellContent === "Đã xử lý") ||
+                    (filterValue === "Duyệt | Từ chối" && hasApproveReject)) {
+                    row.style.display = ""; // Hiển thị hàng nếu thỏa mãn
+                } else {
+                    row.style.display = "none"; // Ẩn hàng nếu không thỏa mãn
+                }
+            });
+        }
+
+        // Sự kiện cho bộ lọc
+        document.getElementById("filterStatus").addEventListener("change", filterTableByStatus);
+
+        // Hàm sắp xếp bảng
+        function sortTable(columnIndex, isDate = false) {
+            const table = document.getElementById("loan-table");
+            const rows = Array.from(table.querySelectorAll("tbody tr"));
+            const sortDirection = sortStates[columnIndex];
+            sortStates[columnIndex] = !sortStates[columnIndex]; // Đổi trạng thái sắp xếp
+
+            rows.sort((a, b) => {
+                const cellA = a.cells[columnIndex].textContent.trim();
+                const cellB = b.cells[columnIndex].textContent.trim();
+
+                // Kiểm tra nếu cột là ngày tháng
+                if (isDate) {
+                    const dateA = new Date(cellA.split("/").reverse().join("-"));
+                    const dateB = new Date(cellB.split("/").reverse().join("-"));
+                    return sortDirection ? dateA - dateB : dateB - dateA;
+                } else {
+                    return sortDirection 
+                        ? cellA.localeCompare(cellB, 'vi', { numeric: true }) 
+                        : cellB.localeCompare(cellA, 'vi', { numeric: true });
+                }
+            });
+
+            rows.forEach(row => table.querySelector("tbody").appendChild(row));
+        }
+
+        // Xử lý yêu cầu "Duyệt" và "Từ chối"
+        function processRequest(element, action) {
+            const row = element.closest("tr");
+            const statusCell = row.querySelector(".status");
+
+            if (action === "approve") {
+                alert("Yêu cầu gia hạn đã được duyệt");
+                statusCell.textContent = "Đã xử lý";
+            } else if (action === "reject") {
+                alert("Yêu cầu gia hạn bị từ chối");
+                statusCell.textContent = "Đã xử lý";
+            }
+            statusCell.className = "status processed"; // Thay đổi class để phân loại
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,181 @@
+.right-under-nav {
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.in_homepage {
+    background-color: #2584B2;
+}
+
+#list-of-book {
+    margin-top: 20px;
+    box-sizing: none;
+    display: flex;
+}
+
+.table-search {
+    height: 50px;
+    width: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.table-search p {
+    font-size: 16px;
+    line-height: 50px;
+    padding-left: 20px;
+}
+
+.column1 {
+    margin-right: 20px;
+}
+
+.column2 {
+    margin: 10px 20px;
+}
+
+.column-down {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translatey(-50%);
+}
+
+.image-book {
+    height: 280px;
+    border-radius: 10px;
+    width: 200px;
+}
+
+.info-of-book {
+    margin: 30px 20px;
+    width: 230px;
+    height: 650px;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+    opacity: 1;
+    display: none;
+}
+
+.contain-info-book {
+    list-style-type: none;
+    padding: 10px 20px;
+}
+
+.constain-info {
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    font-weight: 500;
+}
+
+.fill-info {
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+}
+
+.only-status {
+    color: #0A9C69;
+}
+
+.fill-info-img {
+    height: 180px;
+    width: 120px;
+    border-radius: 10px;
+}
+
+.info-of-book button {
+    height: 40px;
+    width: 190px;
+    border: none;
+    background-color: #2584B2;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 40px;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+}
+
+.navigation .only_home-page {
+    background-color: #2584B2;
+    color: #fff;
+}
+
+.logo_only_home-page {
+    fill: #fff;
+}
+
+.book-have-cursor {
+    cursor: pointer;
+}
+
+#book-name, #book-author, #book-id, #book-date, #book-status{
+    overflow-x: hidden;
+}
+
+@keyframes ShowDetailBook {
+    from {
+        transform: translateX(-100px);
+    }
+    to {
+        transform: translateX(5px);
+    }
+}
+
+.AddAnimationShowBook {
+    animation-name: ShowDetailBook;
+    animation-duration: 0.3s;
+    animation-timing-function:cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+#table-search-genre, #table-search-status {
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 0 10px;
+    font-size: 16px;
+    line-height: 30px;
+    -webkit-appearance: none; /* Safari và Chrome */
+    -moz-appearance: none;    /* Firefox */
+    appearance: none;         /* Các trình duyệt hỗ trợ chuẩn */
+    background-image: none;
+    cursor: pointer;
+}
+.table-option {
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+}
+.table-search-Down {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.table-search-ip {
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    padding-left: 10px;
+}

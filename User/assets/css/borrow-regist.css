@@ -1,0 +1,230 @@
+#nav_only_in_borrow_regist, #nav_only_in_borrow_regist .logo-each-navi{
+    background-color: #2584B2;
+    color: #fff;
+    fill: #fff;
+}
+
+.box-of-borrow-resgist {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.list-of-borrow-regist-book {
+    padding: 0;
+    margin: 20px 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 70px;
+    width: 100%;
+    align-items: center;
+}
+
+.list-of-borrow-regist-book li {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.cell-box-of-borrow-regist-book {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    width: 950px;
+    background-color: #fff;
+}
+
+.cell-box-of-borrow-regist-book ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.box-borrow-book-checkbox {
+    border: none;
+}
+
+.cell-box-of-borrow-regist-book li, .cell-box-of-borrow-regist-book p {
+    font-size: 16px;
+    line-height: 30px;
+    margin: 0;
+}
+
+.cell-box-of-borrow-regist-book li {
+    margin: 0 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.borrow-regist-column1 input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.borrow-regist-column2 img {
+    height: 120px;
+    width: 80px;
+    border-radius: 10px;
+}
+
+.borrow-regist-name-book {
+    width: 150px;
+}
+
+.borrow-regist-author {
+    width: 100px;
+}
+
+.borrow-regist-bid {
+    width: 80px;
+}
+
+.borrow-regist-amount, .borrow-regist-status {
+    width: 100px;
+}
+
+.borrow-regist-delete {
+    width: 40px;
+    color: #025680;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.borrow-regist-delete:hover {
+    color: #a83737;
+}
+
+.borrow-regist-status p {
+    color: #0A9C69;
+}
+
+.box-total-amount-book-borrow-fixed {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.box-total-amount-book-borrow {
+    width: 950px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.list-of-box-total-amount-book {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0 16px;
+    padding: 0;
+}
+
+.list-of-box-total-amount-book input {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.list-of-box-total-amount-book li {
+    font-size: 16px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.box-total-amount-book-borrow button {
+    border: none;
+    height: 30px;
+    width: 200px;
+    border-radius: 4px;
+    background-color: #2584B2;
+    color: #fff;
+    font-size: 16px;
+    line-height: 30px;
+    position: absolute;
+    right: 40px;
+}
+
+.box-total-amount-book-borrow button:hover {
+    background-color: #28aef1;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.li-contain-cell-box-footer {
+    filter: drop-shadow(2px 0 4px rgba(0, 0, 0, 0.1))
+            drop-shadow(-2px 0 4px rgba(0, 0, 0, 0.1))
+            drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))
+            drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.1));
+    background-color: #fff;
+    width: 950px;
+    height: 50px;
+    display: flex; 
+    flex-direction: row;
+    margin: 0;
+    position: fixed;
+    bottom: 10px;
+    z-index: 2;
+}
+
+.list-regist-li-check {
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list-regist-li-check input {
+    height: 20px;
+    width: 20px;
+}
+.regist-footer-selectAll {
+    font-size: 16px;
+    line-height: 50px;
+    margin-right: 30px;
+}
+.regist-footer-clearAll {
+    font-size: 16px;
+    line-height: 50px;
+    margin: 0 20px;
+}
+.regist-footer-right {
+    flex: 1;
+    position: relative;
+}
+.regist-footer-right-button {
+    height: 40px;
+    width: 180px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 40px;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 500;
+    background-color: #2584b2;
+    color: #fff;
+}
+.regist-footer-right-button:hover {
+    background-color: #0d99df;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.borrow-regist-status .registStatus-cannotBorrow {
+    color: #e02601;
+}

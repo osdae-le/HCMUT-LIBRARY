@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ | HCMUT-LIBRARY</title>
+    <link rel="stylesheet" href="./assets/css/emp_header.css">
+    <link rel="stylesheet" href="./assets/css/emp_homepage.css">
+
+</head>
+<body>
+    <header class="header" id="header"></header>
+
+    <div class="homepage-image">
+        <img src="./assets/img/emp_homepage.svg" alt="Trường Đại Học Bách khoa" class="main-image">
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        async function loadHeader() {
+            const headerContainer = document.getElementById("header");
+            const response = await fetch("emp_header.html");
+            const headerHTML = await response.text();
+            headerContainer.innerHTML = headerHTML;
+        }
+        loadHeader();
+    </script>
+
+</body>
+</html>

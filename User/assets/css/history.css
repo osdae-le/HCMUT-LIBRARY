@@ -1,0 +1,116 @@
+.table_history_book {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.empty-history-book {
+    width: 8%;
+}
+.table-history-book {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.list_of_history_book {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+.list_history_book_li {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: 8px 0;
+}
+.list_history_book_inputBox {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+.list_history_book_inputText {
+    width: 90%;
+    border: none;
+    height: 40px;
+    font-size: 16px;
+    background-color: #dad9dd;
+    padding: 0px 0px 0px 60px;
+}
+.list-history-book-svgSearch {
+    height: 22px;
+    width: 22px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+}
+.list-history-book-box {
+    height: 150px;
+    width: 90%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+}
+.list-history-book-boxLeft {
+    width: 140px;
+    display: flex;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+}
+.list-history-book-boxImage {
+    height: 120px;
+    width: 80px;
+    border-radius: 10px;
+}
+.list-history-book-boxRight {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.history-book-tableInfo-cl {
+    height: 30px;
+    font-size: 16px;
+    padding: 4px;
+    box-sizing: unset;
+}
+.history-book-textStatus-return {
+    height: 30px;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+    color: #0a9c69;
+    position: absolute;
+    right: 30px;
+    bottom: 16px;
+}
+.history-book-textStatus-notReturn {
+    height: 30px;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+    color: #e02601;
+    position: absolute;
+    right: 30px;
+    bottom: 16px;
+}
+.history-book-tableInfo-cl1 {
+    width: 250px;
+}
+.history-book-tableInfo-body, .history-book-tableInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.history-book-tableInfo-row1 {
+    margin-right: 26px;
+}

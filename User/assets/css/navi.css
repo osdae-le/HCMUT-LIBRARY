@@ -1,0 +1,471 @@
+.full-screen-contain-nav {
+    display: flex;
+    flex-direction: row;
+    background-color: #E9ECF2;
+}
+
+.left_screen {
+    width: 15%;
+    height: 700px;
+}
+
+.left-nav-contain-navi {
+    width: 15%;
+    background-color: #C2E1F0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+}
+
+.logo_BK {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo_BK img {
+    height: 60px;
+    width: 60px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.logo_BK p {
+    font-size: 24px;
+    line-height: 100px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.navigation {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation li {
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    transition: transform 0.1s, background-color 0.1s;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    align-items: center;
+    transition: transform 0.1s, color 0.1s;
+}
+
+.logo-each-navi {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    fill: #2584B2;
+    transition: transform 0.1s fill 0.1s;
+}
+
+.navigation li:hover, .navigation li:hover .logo-each-navi {
+    background-color: #2584B2;
+    fill: #fff;
+}
+
+.navigation a:hover {
+    color: #fff;
+}
+
+.contain_log_out {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+}
+
+.log-out {
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 0.1s;
+}
+
+.log-out .logo-each-navi {
+    height: 20px;
+    width: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+    transition: all 0.1s;
+}
+
+.log-out:hover, .log-out:hover .logo-each-navi {
+    background-color: #2584B2;
+    color: #fff;
+    fill: #fff;
+}
+
+.right_screen {
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.right-top-nav {
+    position: fixed;
+    top: 0px;
+    height: 92px;
+    width: 85%;
+    z-index: 10;
+    background-color: #E9ECF2;
+}
+
+.line {
+    height: 2px;
+    width: 90%;
+    background-color: #696969;
+    margin-left: 60px;
+}
+
+.contain-something {
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+}
+
+.contain-search {
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.empty {
+    width: 8%;
+    height: 100%;
+}
+
+.sub-contain-search {
+    width: 70%;
+    position: relative;
+}
+
+.sub-contain-search img {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.contain-search input {
+    height: 40px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding-left: 40px;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.mail-and-info {
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.mail-and-bell {
+    height: 30px;
+    width: 30px;
+    margin: 0 20px;
+    fill: #000;
+}
+
+.li-of-mail-bell {
+    position: relative;
+}
+
+.li-of-mail-bell:hover {
+    transform:  translateY(-3px);
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+.mail-and-logo-mail, .list-of-mail {
+    cursor: pointer;
+}
+
+.contain-avatar {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.img-of-contain-avatar {
+    height: 50px;
+    width: 50px;
+}
+
+#content-of-mail {
+    height: 610px;
+    width: 300px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    top: 92px;
+    align-items: center;
+    border: 1px solid rgba(164,164,164,0.3);
+    transform: translateX(100%);
+    z-index: 4;
+}
+
+.contain-text-and-close {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contain-text-and-close_close {
+    height: 20px;
+    width: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.contain-text-and-close_close:hover {
+    fill: #b44444;
+}
+
+.contain-text-and-close p{
+    font-size: 20px;
+    line-height: 30px;
+    height: 30px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    padding: 0 10px;
+    margin: 10px 0;
+    text-align: start;
+}
+
+.content-of-mail-line {
+    height: 1px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-of-mail-line div {
+    width: 90%;
+    background-color: #989898;
+    height: 1px;
+}
+
+.list-of-message {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-of-message li {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    padding: 5px 0;
+    padding-left: 10px;
+    cursor: pointer;
+    box-sizing: unset;
+}
+
+.list-of-message li:hover {
+    background-color: rgba(37,132,178,0.3);
+}
+
+.list-of-message img {
+    height: 40px;
+    width: 40px;
+}
+
+.name-sender-and-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-sender-and-time, .message-sent-content {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+}
+
+.name-sender__name, .name-sender__time {
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    font-weight: lighter;
+    color: #989898;
+    margin: 0 18px;
+}
+
+.name-sender__name {
+    font-weight: 700;
+    color: #000;
+}
+
+.message-sent-content__text {
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    margin: 0 18px;
+}
+
+.empty-right-nav {
+    height: 92px;
+    width: 100%;
+}
+
+#content-of-notice {
+    height: 630px;
+    width: 500px;
+    background-color: #fff;
+    position: fixed;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    overflow: hidden;
+    transform: translateX(100%);
+    z-index: 3;
+}
+
+
+.content-of-notice-line {
+    height: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-of-notice-line div {
+    background-color: #989898;
+    height: 1px;
+    width: 90%;
+}
+
+.list-of-notice {
+    list-style-type: none;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.list-of-notice li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.notice-contain-content {
+    height: 120px;
+    width: 90%;
+    border-radius: 10px;
+    background-color: #ebeff6;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.only-last-notice-content {
+    margin-bottom: 20px;
+}
+
+.notice-contain-content p {
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0;
+    padding: 10px 20px;
+    font-weight: 700;
+    height: 48px;
+    box-sizing: unset;
+}
+
+.notice-contain-content-more-detail {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    margin: 0 10px;
+}
+
+.notice__contain-more-detail {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+
+._contain-more-detail {
+    width: 50%;
+    justify-content: flex-start;
+}
+
+.__contain-more-detail {
+    width: 30%;
+    justify-content: flex-start;
+}
+
+.notice__more-detail__logo {
+    height: 16px;
+    width: 16px;
+    fill: #2584B2;
+}
+
+.notice__contain-more-detail p{
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    font-weight: lighter;
+    line-height: 48px;
+    padding: 0 10px;
+}
+
+.notice__contain-more-detail button {
+    height: 20px;
+    width: 70px;
+    border: none;
+    border-radius: 5px;
+    background-color: #06823e;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.notice__contain-more-detail button:hover {
+    background-color: #2584B2;
+}

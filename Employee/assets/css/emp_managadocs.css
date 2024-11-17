@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.main-container {
+    display: flex;
+    padding: 20px;
+    background-color: #f4f4f8;
+}
+
+.sidebar {
+    width: 260px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    position: fixed;
+    top: 100px; 
+    left: 20px;
+    height: calc(100vh - 140px); 
+    overflow-y: auto;
+}
+
+
+.sidebar h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar h3 .icon,
+.add-document .icon {
+    width: 20px;
+    margin-right: 8px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+.add-document {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #007bff;
+    background: none;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-document:hover {
+    background-color: #f0f8ff;
+}
+
+
+.content {
+    margin-left: 280px;
+    flex: 1;
+    padding-right: 20px; 
+    overflow-y: auto; 
+}
+
+
+.search-bar {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f4f4f8;
+    width: 100%; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+}
+
+
+.search-bar input {
+    width: 300px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    right: 10px;
+}
+
+.document-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px;
+}
+
+
+.document-item {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.document-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: default; 
+}
+
+.document-item .title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #333;
+    cursor: pointer;
+}
+
+.document-item .author {
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+}
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.pagination span {
+    font-size: 16px;
+}
+
+.page-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.page-button img {
+    width: 24px;
+    height: 24px;
+}

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác nhận trả sách | HCMUT-LIBRARY</title>
+    <link rel="stylesheet" href="./assets/css/emp_header.css">
+    <link rel="stylesheet" href="./assets/css/emp_bookreturnconfirm.css">
+</head>
+<body>
+    <header class="header" id="header"></header>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>
+                <img src="./assets/img/emp_managedocs_icondanhmuc.svg" alt="Danh mục Icon" class="icon"> 
+                DANH MỤC
+            </h3>
+            <ul>
+                <li><a href="emp_borrow_register.html">Đăng ký mượn</a></li>
+                <li><a href="emp_requestextension.html">Yêu cầu gia hạn</a></li>
+                <li><a href="emp_bookreturnconfirm.html">Xác nhận trả sách</a></li>
+                <li><a href="emp_overduenotice.html">Thông báo quá hạn</a></li>
+            </ul>
+        </aside>
+
+        <section class="content">
+            <h2>XÁC NHẬN TRẢ SÁCH</h2>
+
+            <div class="return-table-container">
+                <table class="return-table" id="return-table">
+                    <thead>
+                        <tr>
+                            <th>CCCD <span class="filter-icon" onclick="sortTable(0)">🔽</span></th>
+                            <th>ID sách <span class="filter-icon" onclick="sortTable(1)">🔽</span></th>
+                            <th>Tên sách <span class="filter-icon" onclick="sortTable(2)">🔽</span></th>
+                            <th>Trạng thái</th>
+                            <th>Phí phạt</th>
+                            <th>
+                                Xử lý yêu cầu
+                                <select id="filterStatus">
+                                    <option value="Tất cả">Tất cả</option>
+                                    <option value="Đã xử lý">Đã xử lý</option>
+                                    <option value="Xác nhận">Chưa xử lý</option>
+                                </select>                                                              
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>001282946366</td>
+                            <td>CH1003</td>
+                            <td>Hóa đại cương</td>
+                            <td>Đúng hạn, nguyên vẹn</td>
+                            <td>0</td>
+                            <td class="status processed">Đã xử lý</td>
+                        </tr>
+                        <tr>
+                            <td>005225702399</td>
+                            <td>MT1003</td>
+                            <td>Giải tích 1</td>
+                            <td>Đúng hạn, nguyên vẹn</td>
+                            <td>0</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>002301234798</td>
+                            <td>SP1031</td>
+                            <td>Triết học Mác - Lênin</td>
+                            <td>Trễ 1 ngày, nguyên vẹn</td>
+                            <td>10.000 VND</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>001282946366</td>
+                            <td>PH1003</td>
+                            <td>Vật lý 1</td>
+                            <td>Trễ 7 ngày, nguyên vẹn</td>
+                            <td>50.000 VND</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>078901234567</td>
+                            <td>ME3005</td>
+                            <td>Thiết kế hệ thống cơ điện tử</td>
+                            <td>Đúng hạn, rách bìa</td>
+                            <td>20.000 VND</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>089012345678</td>
+                            <td>AS3077</td>
+                            <td>Cơ sở vật lý sợi quang học và ứng dụng</td>
+                            <td>Trễ 7 ngày, nguyên vẹn</td>
+                            <td>50.000 VND</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>090123456789</td>
+                            <td>TR3077</td>
+                            <td>Thí nghiệm kỹ thuật hàng không 1</td>
+                            <td>Đúng hạn, nguyên vẹn</td>
+                            <td>0</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>091343356418</td>
+                            <td>MT2013</td>
+                            <td>Xác suất thống kê</td>
+                            <td>Đúng hạn, nguyên vẹn</td>
+                            <td>0</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>              
+                        <tr>
+                            <td>035456789012</td>
+                            <td>PH1007</td>
+                            <td>Thí nghiệm vật lý</td>
+                            <td>Trễ 7 ngày, nguyên vẹn</td>
+                            <td>50.000 VND</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>                    
+                        <tr>
+                            <td>098765432109</td>
+                            <td>SP1035</td>
+                            <td>Chủ nghĩa xã hội khoa học</td>
+                            <td>Trễ 3 ngày, nguyên vẹn</td>
+                            <td>30.000 VND</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>                       
+                        <tr>
+                            <td>052345678901</td>
+                            <td>IM1025</td>
+                            <td>Quản lý dự án cho kỹ sư</td>
+                            <td>Trễ 2 ngày, nguyên vẹn</td>
+                            <td>20.000 VND</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>                        
+                        <tr>
+                            <td>089012302137</td>
+                            <td>CO2013</td>
+                            <td>Hệ cơ sở dữ liệu</td>
+                            <td>Đúng hạn, nguyên vẹn</td>
+                            <td>0</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>                        
+                        <tr>
+                            <td>098033432346</td>
+                            <td>CO3001</td>
+                            <td>Công nghệ phần mềm</td>
+                            <td>Đúng hạn, nguyên vẹn</td>
+                            <td>0</td>
+                            <td class="status confirm">
+                                <span class="confirm" onclick="confirmReturn(this)">Xác nhận</span>
+                            </td>
+                        </tr>                      
+                                      
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        async function loadHeader() {
+            const headerContainer = document.getElementById("header");
+            const response = await fetch("emp_header.html");
+            const headerHTML = await response.text();
+            headerContainer.innerHTML = headerHTML;
+        }
+        loadHeader();
+
+        const sortStates = [true, true, true]; // Trạng thái sắp xếp
+
+        // Hàm lọc trạng thái "Xử lý yêu cầu"
+        function filterTableByStatus() {
+            const filterValue = document.getElementById("filterStatus").value;
+            const rows = document.querySelectorAll(".return-table tbody tr");
+
+            rows.forEach(row => {
+                const statusCell = row.cells[5];
+                const cellContent = statusCell.textContent.trim();
+                const hasConfirm = statusCell.querySelector(".confirm");
+
+                if (filterValue === "Tất cả" ||
+                    (filterValue === "Đã xử lý" && cellContent === "Đã xử lý") ||
+                    (filterValue === "Xác nhận" && hasConfirm)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+        document.getElementById("filterStatus").addEventListener("change", filterTableByStatus);
+
+        function sortTable(columnIndex) {
+            const table = document.getElementById("return-table");
+            const rows = Array.from(table.querySelectorAll("tbody tr"));
+            const sortDirection = sortStates[columnIndex];
+            sortStates[columnIndex] = !sortStates[columnIndex];
+
+            rows.sort((a, b) => {
+                const cellA = a.cells[columnIndex].textContent.trim();
+                const cellB = b.cells[columnIndex].textContent.trim();
+                return sortDirection 
+                    ? cellA.localeCompare(cellB, 'vi', { numeric: true }) 
+                    : cellB.localeCompare(cellA, 'vi', { numeric: true });
+            });
+
+            rows.forEach(row => table.querySelector("tbody").appendChild(row));
+        }
+
+        function confirmReturn(element) {
+            alert("Xác nhận trả sách thành công");
+            const row = element.closest("tr");
+            const statusCell = row.querySelector(".status");
+            statusCell.textContent = "Đã xử lý";
+            statusCell.className = "status processed";
+        }
+    </script>
+</body>
+</html>

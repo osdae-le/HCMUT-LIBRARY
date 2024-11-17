@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tài liệu | HCMUT-LIBRARY</title>
+    <link rel="stylesheet" href="./assets/css/emp_header.css">
+    <link rel="stylesheet" href="./assets/css/emp_managadocs.css">
+</head>
+<body>
+    <header class="header" id="header"></header>
+    <div class="main-container">
+        <aside class="sidebar">
+            <h3>
+                <img src="./assets/img/emp_managedocs_icondanhmuc.svg" alt="Danh mục Icon" class="icon"> 
+                DANH MỤC
+            </h3>
+            <ul>
+                <li><a href="emp_managedocs.html">Tất cả</a></li>
+                <li><a href="emp_managedocs.html">Bảo dưỡng công nghiệp</a></li>
+                <li><a href="emp_managedocs.html">Cơ khí</a></li>
+                <li><a href="emp_managedocs.html">Kỹ thuật địa chất và dầu khí</a></li>
+                <li><a href="emp_managedocs.html">Điện - Điện tử</a></li>
+                <li><a href="emp_managedocs.html">Kỹ thuật giao thông</a></li>
+                <li><a href="emp_managedocs.html">Kỹ thuật hóa học</a></li>
+                <li><a href="emp_managedocs.html">Môi trường và tài nguyên</a></li>
+                <li><a href="emp_managedocs.html">Khoa học và kỹ thuật máy tính</a></li>
+                <li><a href="emp_managedocs.html">Quản lý công nghiệp</a></li>
+                <li><a href="emp_managedocs.html">Khoa học ứng dụng</a></li>
+                <li><a href="emp_managedocs.html">Công nghệ vật liệu</a></li>
+                <li><a href="emp_managedocs.html">Kỹ thuật xây dựng</a></li>
+            </ul>
+
+            <button class="add-document" onclick="navigateTo('add-document')">
+                <img src="./assets/img/emp_managedocs_iconthemtailieu.svg" alt="Thêm Tài Liệu Icon" class="icon"> 
+                Thêm Tài Liệu
+            </button>
+        </aside>
+        <section class="content">
+            <div class="search-bar">
+                <input type="text" placeholder="Nhập tên sách cần tìm">
+            </div>
+
+            <div class="document-grid">
+                <div class="document-item">
+                    <img src="./assets/img/emp_managedocs_book1.svg" alt="Hóa đại cương">
+                    <p class="title" onclick="navigateTo('hoa-dai-cuong')">Hóa đại cương</p>
+                    <p class="author" onclick="navigateTo('hoa-dai-cuong')">Nguyễn Đình Soa</p>
+                </div>
+                <div class="document-item">
+                    <img src="./assets/img/emp_managedocs_book2.svg" alt="Giải tích 1">
+                    <p class="title" onclick="navigateTo('hoa-dai-cuong')">Giải tích 1</p>
+                    <p class="author" onclick="navigateTo('hoa-dai-cuong')">Nguyễn Đình Huy (CB)</p>
+                </div>
+                <div class="document-item">
+                    <img src="./assets/img/emp_managedocs_book3.svg" alt="Giải tích 2">
+                    <p class="title" onclick="navigateTo('hoa-dai-cuong')">Giải tích 2</p>
+                    <p class="author" onclick="navigateTo('hoa-dai-cuong')">Nguyễn Đình Huy (CB)</p>
+                </div>
+                <div class="document-item">
+                    <img src="./assets/img/emp_managedocs_book4.svg" alt="Kỹ thuật lập trình">
+                    <p class="title" onclick="navigateTo('hoa-dai-cuong')">Kỹ thuật lập trình</p>
+                    <p class="author" onclick="navigateTo('hoa-dai-cuong')">Nguyễn Trung Trực</p>
+                </div>        
+                <div class="document-item">
+                    <img src="./assets/img/emp_managedocs_book5.svg" alt="Cấu trúc dữ liệu và giải thuật">
+                    <p class="title" onclick="navigateTo('hoa-dai-cuong')">Cấu trúc dữ liệu và giải thuật</p>
+                    <p class="author" onclick="navigateTo('hoa-dai-cuong')">Nguyễn Trung Trực</p>
+                </div>
+                <div class="document-item">
+                    <img src="./assets/img/emp_managedocs_book6.svg" alt="Triết học Mác - Lênin">
+                    <p class="title" onclick="navigateTo('hoa-dai-cuong')">Triết học Mác - Lênin</p>
+                    <p class="author" onclick="navigateTo('hoa-dai-cuong')">Bộ GD & ĐT</p>
+                </div>
+                <div class="document-item">
+                    <img src="./assets/img/emp_managedocs_book7.svg" alt="Kinh tế chính trị Mác - Lênin">
+                    <p class="title" onclick="navigateTo('hoa-dai-cuong')">Kinh tế chính trị Mác - Lênin</p>
+                    <p class="author" onclick="navigateTo('hoa-dai-cuong')">Bộ GD & ĐT</p>
+                </div>
+                <div class="document-item">
+                    <img src="./assets/img/emp_managedocs_book8.svg" alt="Chủ nghĩa xã hội khoa học">
+                    <p class="title" onclick="navigateTo('hoa-dai-cuong')">Chủ nghĩa xã hội khoa học</p>
+                    <p class="author" onclick="navigateTo('hoa-dai-cuong')">Bộ GD & ĐT</p>
+                </div>
+                <div class="document-item">
+                    <img src="./assets/img/emp_managedocs_book9.svg" alt="Lịch sử Đảng Cộng sản Việt Nam">
+                    <p class="title" onclick="navigateTo('hoa-dai-cuong')">Lịch sử Đảng Cộng sản Việt Nam</p>
+                    <p class="author" onclick="navigateTo('hoa-dai-cuong')">Bộ GD & ĐT</p>
+                </div>        
+                <div class="document-item">
+                    <img src="./assets/img/emp_managedocs_book10.svg" alt="Tư tưởng Hồ Chí Minh">
+                    <p class="title" onclick="navigateTo('hoa-dai-cuong')">Tư tưởng Hồ Chí Minh</p>
+                    <p class="author" onclick="navigateTo('hoa-dai-cuong')">Bộ GD & ĐT</p>
+                </div>                     
+            </div>
+
+            <div class="pagination">
+                <span>1 / 100</span>
+                <button class="page-button" onclick="navigateTo('previous-page')">
+                    <img src="./assets/img/emp_managedocs_back.svg" alt="Previous Page">
+                </button>
+                <button class="page-button" onclick="navigateTo('next-page')">
+                    <img src="./assets/img/emp_managedocs_next.svg" alt="Next Page">
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        async function loadHeader() {
+            const headerContainer = document.getElementById("header");
+            const response = await fetch("emp_header.html");
+            const headerHTML = await response.text();
+            headerContainer.innerHTML = headerHTML;
+        }
+        loadHeader();
+    </script>
+
+</body>
+</html>

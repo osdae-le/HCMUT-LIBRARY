@@ -1,0 +1,127 @@
+.content-of-mail {
+    height: calc(100vh - 92px);
+    width: 300px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    right: 0;
+    top: 92px;
+    align-items: center;
+    border: 1px solid rgba(164,164,164,0.3);
+    transform: translateX(100%);
+    z-index: 4;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.contain-text-and-close {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.contain-text-and-close_close {
+    height: 20px;
+    width: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.contain-text-and-close_close:hover {
+    fill: #b44444;
+}
+
+.contain-text-and-close p{
+    font-size: 20px;
+    line-height: 30px;
+    height: 30px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    padding: 0 10px;
+    margin: 10px 0;
+    text-align: start;
+}
+
+.content-of-mail-line {
+    height: 1px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content-of-mail-line div {
+    width: 90%;
+    background-color: #989898;
+    height: 1px;
+}
+
+.list-of-message {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-of-message li {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    padding: 5px 0;
+    padding-left: 10px;
+    cursor: pointer;
+    box-sizing: unset;
+}
+
+.list-of-message li:hover {
+    background-color: rgba(37,132,178,0.3);
+}
+
+.list-of-message img {
+    height: 40px;
+    width: 40px;
+}
+
+.name-sender-and-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.name-sender-and-time, .message-sent-content {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+}
+
+.name-sender__name, .name-sender__time {
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    font-weight: lighter;
+    color: #989898;
+    margin: 0 18px;
+}
+
+.name-sender__name {
+    font-weight: 700;
+    color: #000;
+}
+
+.message-sent-content__text {
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    margin: 0 18px;
+}
+
+.empty-right-nav {
+    height: 92px;
+    width: 100%;
+}

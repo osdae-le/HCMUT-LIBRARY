@@ -1,0 +1,142 @@
+.right-mainBox {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+.list-of-book-borrow {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 980px;
+}
+.list-of-book-li {
+    display: flex;
+    flex-direction: row;
+    width: inherit;
+    height: 150px;
+    background-color: #fff;
+    position: relative;
+}
+.list-of-book-li-check {
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-of-book-li-check input {
+    border: none;
+    height: 26px;
+    width: 26px;
+    fill: #e4e4e4;
+}
+.list-of-book-li-img {
+    width: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.list-of-book-li-img__image {
+    height: 120px;
+    width: 80px;
+    border-radius: 10px;
+}
+.list-of-book-table, .list-of-book-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+}
+.list-of-book-row {
+    display: flex;
+    flex-direction: row;
+}
+.list-of-book-cl {
+    font-size: 16px;
+    line-height: 30px;
+    box-sizing: unset;
+    padding: 4px;
+}
+.list-of-book-cl_set1 {
+    width: 250px;
+}
+.list-of-book-cl_set2 {
+    width: 220px;
+}
+.list-of-book-rowFirst, .list-of-book-clFirst {
+    width: 100%;
+}
+.list-of-book-clFirst {
+    margin-right: 26px;
+}
+.list-of-book-status {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    line-height: 30px;
+    display: flex;
+    position: absolute;
+    color: #e02601;
+    right: 30px;
+    bottom: 16px;
+}
+.borrowBook-footer {
+    height: 60px;
+    width: inherit;
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    position: fixed;
+    bottom: 20px;
+    z-index: 2;
+}
+.borrowBook-footer-selectAll {
+    font-size: 16px;
+    line-height: 60px;
+    margin: 0;
+    padding: 0 20px;
+    width: 150px;
+}
+.borrowBook-footer-right {
+    flex: 1;
+    position: relative;
+}
+.borrowBook-right-2button {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.borrowBook-2button-renew, .borrowBook-2button-return {
+    height: 40px;
+    width: 140px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 10px;
+}
+.borrowBook-2button-renew {
+    background-color: #7ab6d3;
+}
+.borrowBook-2button-renew:hover {
+    background-color: #399dd0;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.borrowBook-2button-return {
+    background-color: #2584b2;
+}
+.borrowBook-2button-return:hover {
+    background-color: #09628f;
+    cursor: pointer;
+    transition: all 0.2s;
+}

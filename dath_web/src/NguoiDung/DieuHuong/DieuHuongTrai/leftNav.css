@@ -1,0 +1,111 @@
+.left-nav-contain-navi {
+    width: 15%;
+    background-color: #C2E1F0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+}
+
+.logo_BK {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo_bk_img {
+    height: 60px;
+    width: 60px;
+    margin-left: 20px;
+    margin-right: 10px;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-size: 60px 60px;
+}
+
+.logo_BK p {
+    font-size: 24px;
+    line-height: 100px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.navigation {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.navigation li {
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+    transition: transform 0.1s, background-color 0.1s;
+    flex-wrap: wrap;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    padding-left: 20px;
+    align-items: center;
+    transition: transform 0.1s, color 0.1s;
+}
+
+.logo-each-navi {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    fill: #2584B2;
+    transition: transform 0.1s fill 0.1s;
+}
+
+.navigation li:hover, .navigation li:hover .logo-each-navi {
+    background-color: #2584B2;
+    fill: #fff;
+}
+
+.navigation a:hover {
+    color: #fff;
+}
+
+.contain_log_out {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+}
+
+.log-out {
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: all 0.1s;
+}
+
+.log-out .logo-each-navi {
+    height: 20px;
+    width: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+    transition: all 0.1s;
+}
+
+.log-out:hover, .log-out:hover .logo-each-navi {
+    background-color: #2584B2;
+    color: #fff;
+    fill: #fff;
+}

@@ -81,7 +81,7 @@ function RegistBorrowBook(props) {
                                     <li className="borrow-regist-status">
                                         Tinh trang:
                                         <p className={book.status === "Available" ? "registStatus-canBorrow" : "registStatus-cannotBorrow"}>
-                                            {book.status}
+                                            {book.status === "Available" ? "Có thể mượn" : "Đã hết"}
                                         </p>
                                     </li>
                                     <li className="borrow-regist-delete">

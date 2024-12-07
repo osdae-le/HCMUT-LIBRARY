@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     bookId: DataTypes.INTEGER,
     bookCopyId: DataTypes.INTEGER,
+    renew: DataTypes.INTEGER,
     borrowDate: DataTypes.DATE,
     // dd_timeType: DataTypes.STRING,
     // ard_timeType: DataTypes.STRING,

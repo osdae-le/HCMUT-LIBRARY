@@ -5,4 +5,8 @@ const createBorrow = (id, listBookId) => {
   return axios.post(`/api/create-eborrow/${id}`, listBookId);
 };
 
-export { createBorrow, };
+const renewBorrow = (borrowData) => {
+  return axios.put(`/api/renew`, borrowData);
+}
+
+export { createBorrow, renewBorrow };

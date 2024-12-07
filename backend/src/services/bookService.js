@@ -1,81 +1,68 @@
-// bookController.js
-import bookService from "../services/bookService";  // Import service
+import db from "../models/index";
 
-let handleAddBook = async (req, res) => {
-  try {
-    // Lấy dữ liệu sách từ body của yêu cầu
-    let bookData = req.body;
+let handleAddBook = (bookData) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      // Sử dụng Sequelize để tạo một bản ghi mới trong bảng `books`
+      let newBook = await db.Book.create({
+        bookName: bookData.bookName,
+        author: bookData.author,
+        datePublish: bookData.datePublish,
+        genre: bookData.genre,
+        description: bookData.description,
+        quantity: bookData.quantity,
+        img: bookData.img,
+        status: bookData.status,
+      });
 
-    // Gọi hàm handleAddBook trong service để thêm sách
-    let newBook = await bookService.handleAddBook(bookData);
-
-    console.log("Book Added Successfully: ", newBook);
-
-    // Trả về phản hồi thành công
-    return res.status(201).json({
-      message: "Book added successfully",
-      book: newBook,
-    });
-  } catch (error) {
-    console.error("Error adding book: ", error);
-
-    // Trả về phản hồi lỗi
-    return res.status(500).json({
-      message: "Failed to add book",
-      error: error.message,
-    });
-  }
+      console.log("New Book Added: ", newBook);
+      resolve(newBook); // Trả về bản ghi sách vừa được thêm
+    } catch (error) {
+      reject(error); // Trả về lỗi nếu xảy ra vấn đề
+    }
+  });
 };
 
 
-let handleDeleteBook = async (req, res) => {
+let handleDeleteBook = async (bookId) => {
   try {
-    const bookId = req.params.id; // Lấy id sách từ params
+    // Tìm sách trong database
+    const book = await db.Book.findOne({
+      where: { id: bookId },
+    });
 
-    // Gọi service để xóa sách
-    let result = await bookService.handleDeleteBook(bookId);
-
-    if (result) {
-      return res.status(200).json({
-        message: "Book deleted successfully",
-      });
-    } else {
-      return res.status(404).json({
-        message: "Book not found",
-      });
+    if (!book) {
+      return false; // Sách không tồn tại
     }
+
+    // Xóa sách
+    await book.destroy();
+    return true;
   } catch (error) {
     console.error("Error deleting book: ", error);
-    return res.status(500).json({
-      message: "Failed to delete book",
-      error: error.message,
-    });
+    throw new Error("Failed to delete book");
   }
 };
 
-let handleUpdateBook = async (req, res) => {
+let handleUpdateBook = async (bookId, bookData) => {
   try {
-    const bookId = req.params.id;
-    const { bookName, author, datePublish, genre, description, quantity, img, status } = req.body;
+    // Tìm sách theo ID
+    const book = await db.Book.findOne({
+      where: { id: bookId },
+    });
 
-    const bookData = {
-      bookName,
-      author,
-      datePublish,
-      genre,
-      description,
-      quantity,
-      img,
-      status,
-    };
+    if (!book) {
+      throw new Error("Book not found"); // Ném lỗi nếu sách không tồn tại
+    }
 
-    const updatedBook = await bookService.handleUpdateBook(bookId, bookData);
+    // Cập nhật sách với dữ liệu mới
+    await book.update(bookData);
 
-    return res.status(200).json({ message: 'Sách đã được sửa thành công', book: updatedBook });
+    return book; // Trả về bản ghi sách sau khi cập nhật
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: 'Lỗi khi sửa sách' });
+    console.error("Error updating book: ", error);
+    throw error; // Ném lỗi để controller xử lý
   }
 };
 
-module.exports = { handleAddBook , handleDeleteBook, handleUpdateBook};
+module.exports = { handleAddBook, handleDeleteBook, handleUpdateBook };

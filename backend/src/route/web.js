@@ -24,6 +24,7 @@ let initWebRoutes = (app) => {
   //eBorrow bookCoppy
   router.get("/api/get-eborrow/:id", userController.handleGetEBorrow);
   router.post("/api/create-eborrow/:id", borrowController.handleAddBorrow);
+  router.put("/api/renew", borrowController.handleUpdateBorrow)
 
   return app.use("/", router);
 };

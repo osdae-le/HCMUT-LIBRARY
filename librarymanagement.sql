@@ -106,6 +106,7 @@ CREATE TABLE `eBorrows` (
   `userId` int(11) NOT NULL,
   `bookId` int(11) NOT NULL,
   `bookCopyId` int(11) NOT NULL,
+  `renew` int(1)  NOT NULL,
   `borrowDate` datetime NOT NULL DEFAULT current_timestamp(),
   `returnDate` datetime DEFAULT NULL,
   `status` enum('Borrowed','Returned','Overdue') DEFAULT 'Borrowed',
@@ -270,13 +271,13 @@ INSERT INTO `books` (`id`, `bookName`, `author`, `datePublish`, `genre`, `descri
 --
 -- Dumping data for table `eBorrow`
 --
-INSERT INTO eborrows (id, userId, bookId, bookCopyId, borrowDate, returnDate, status, createdAt, updatedAt)
+INSERT INTO eborrows (id, userId, bookId, bookCopyId, renew, borrowDate, returnDate, status, createdAt, updatedAt)
 VALUES
-    (22, 1302073, 973, 302, '2024-12-02', '2024-12-07', 'Borrowed', '2024-12-02 11:00:00', '2024-12-07 10:00:00'),
-    (23, 1302073, 974, 332, '2024-12-01', '2024-12-05', 'Returned', '2024-12-01 11:00:00', '2024-12-05 14:00:00'),
-    (24, 2318399, 975, 382, '2024-12-01', '2024-12-10', 'Borrowed', '2024-12-01 08:00:00', '2024-12-06 14:00:00'),
-    (25, 2318399, 976, 432, '2024-12-01', '2024-12-07', 'Borrowed', '2024-12-01 09:00:00', '2024-12-07 10:00:00'),
-    (26, 2318399, 977, 442, '2024-12-01', '2024-12-05', 'Overdue', '2024-12-01 12:30:00', '2024-12-05 15:30:00');
+    (22, 1302073, 973, 302, 1,'2024-12-02', '2024-12-07', 'Borrowed', '2024-12-02 11:00:00', '2024-12-07 10:00:00'),
+    (23, 1302073, 974, 332, 1,'2024-12-01', '2024-12-05', 'Returned', '2024-12-01 11:00:00', '2024-12-05 14:00:00'),
+    (24, 2318399, 975, 382, 0,'2024-12-01', '2024-12-30', 'Borrowed', '2024-12-01 08:00:00', '2024-12-06 14:00:00'),
+    (25, 2318399, 976, 432, 1,'2024-12-01', '2024-12-07', 'Borrowed', '2024-12-01 09:00:00', '2024-12-07 10:00:00'),
+    (26, 2318399, 977, 442, 1,'2024-12-01', '2024-12-05', 'Overdue', '2024-12-01 12:30:00', '2024-12-05 15:30:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

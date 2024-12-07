@@ -49,4 +49,40 @@ let handleAddBorrow = (userId, borrowData) => {
   });
 };
 
-module.exports = { handleAddBorrow };
+let handleUpdateBorrow = (borrowData) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      for (let i = 0; i < borrowData.length; i++) {
+        const eBorrow = await db.eBorrows.findOne({
+          where: { id: borrowData[i] }
+        })
+
+        if (eBorrow) {
+          if (eBorrow.renew == 1) {
+            let date = eBorrow.returnDate ? new Date(eBorrow.returnDate) : new Date();
+            console.log("Ngày hiện tại:", date);
+
+            // Tăng thêm 14 ngày
+            date.setDate(date.getDate() + 14);
+            console.log("Ngày sau 14 ngày:", date);
+
+            // Cập nhật lại giá trị returnDate và reset renew về 0
+            await eBorrow.update({
+              returnDate: date, // Sequelize sẽ tự xử lý định dạng `DATETIME`
+              renew: 0,
+            });
+          }
+          else reject("Đã hết lượt gia hạn");
+        }
+        else {
+          reject("Lỗi không tìm thấy bản ghi phù hợp với id");
+        }
+      }
+      resolve("Gia hạn thành công");
+    } catch (e) {
+      reject(e);
+    }
+  })
+}
+
+module.exports = { handleAddBorrow, handleUpdateBorrow };

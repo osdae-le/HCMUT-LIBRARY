@@ -30,26 +30,29 @@ let handleAddBorrow = async (req, res) => {
 
 let handleUpdateBorrow = async (req, res) => {
   try {
-    const borrowId = req.params.id;
-    const { borrowName, author, datePublish, genre, description, quantity, img, status } = req.body;
+    const data = req.body;
+    if (data == null) {
+      return res.status(500).json({ error: 'Lỗi thiếu id của Electric Borrow' });
+    }
+    // const { borrowName, author, datePublish, genre, description, quantity, img, status } = req.body;
 
-    const borrowData = {
-      borrowName,
-      author,
-      datePublish,
-      genre,
-      description,
-      quantity,
-      img,
-      status,
-    };
+    // const borrowData = {
+    //   borrowName,
+    //   author,
+    //   datePublish,
+    //   genre,
+    //   description,
+    //   quantity,
+    //   img,
+    //   status,
+    // };
 
-    const updatedborrow = await borrowService.handleUpdateborrow(borrowId, borrowData);
+    const updatedborrow = await borrowService.handleUpdateBorrow(data);
 
-    return res.status(200).json({ message: 'Tình trạng của Electric Borrow đã được cập nhật thành công', borrow: updatedborrow });
+    return res.status(200).json({ message: 'Gia hạn thành công', borrow: updatedborrow });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ error: 'Lỗi khi sửa sách' });
+    return res.status(500).json({ error: 'Lỗi khi gia hạn' });
   }
 };
 

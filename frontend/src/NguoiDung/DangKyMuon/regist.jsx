@@ -1,14 +1,35 @@
 import './regist.css';
-import {RegistBorrow} from './data.jsx';
-import { useState } from 'react';
+//import { RegistBorrow } from './data.jsx';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { createBorrow } from '../../services/borrowService.js';
+import { getAllBooks } from '../../services/userService.js';
 
-function RegistBorrowBook() {
+function RegistBorrowBook(props) {
+    const [RegistBorrow, setBookData] = useState([]); // Dữ liệu sách từ API
     const [selectAll, setSelectAll] = useState(false);
     const [selectedBooks, setSelectedBooks] = useState([]);
+    let userData = props.getStateFromParent();
+    userData = userData.user;
+
+    const navigate = useNavigate(); // Hook để điều hướng
+
+    useEffect(() => {
+        const fetchBooks = async () => {
+            try {
+                const books = await getAllBooks();
+                setBookData(books?.books || []); // Đảm bảo dữ liệu là mảng
+            } catch (error) {
+                console.error("Lỗi khi tải dữ liệu:", error);
+            }
+        };
+
+        fetchBooks();
+    }, []); // Chỉ chạy khi component render lần đầu
 
     const handleSelectAll = () => {
         setSelectAll(!selectAll);
-        const allBookIds = RegistBorrow.map(book => book.BId);
+        const allBookIds = RegistBorrow.map(book => book.id);
         setSelectedBooks(!selectAll ? allBookIds : []);
     };
 
@@ -19,6 +40,12 @@ function RegistBorrowBook() {
                 : [...prevSelected, bookId]
         );
     };
+
+    const handleOnclick = async () => {
+        const response = await createBorrow(userData.id, selectedBooks);
+        window.alert(response.message);
+        navigate('/history');
+    }
 
     return (
         <div className='right-under-nav'>
@@ -31,29 +58,29 @@ function RegistBorrowBook() {
                                 <ul>
                                     <li className="borrow-regist-column1">
                                         <input type="checkbox" className="box-borrow-book-checkbox"
-                                        checked={selectedBooks.includes(book.BId)}
-                                        onChange={() => handleCheckboxChange(book.BId)}/>
+                                            checked={selectedBooks.includes(book.id)}
+                                            onChange={() => handleCheckboxChange(book.id)} />
                                     </li>
                                     <li className="borrow-regist-column2">
-                                        <img src={require(`${book.img}`)} alt="" />
+                                        <img src={book.img} alt="" />
                                     </li>
                                     <li className="borrow-regist-name-book">
-                                        {book.Bname}
+                                        {book.bookName}
                                     </li>
                                     <li className="borrow-regist-author">
                                         {book.author}
                                     </li>
                                     <li className="borrow-regist-bid">
-                                        ID sach: 
-                                        <p>{book.BId}</p>
+                                        ID sach:
+                                        <p>{book.id}</p>
                                     </li>
                                     <li className="borrow-regist-amount">
                                         So luong:
-                                        <p>{book.amount}</p>
+                                        <p>{book.quantity}</p>
                                     </li>
                                     <li className="borrow-regist-status">
                                         Tinh trang:
-                                        <p className={book.status === "Có thể mượn" ? "registStatus-canBorrow" : "registStatus-cannotBorrow"}>
+                                        <p className={book.status === "Available" ? "registStatus-canBorrow" : "registStatus-cannotBorrow"}>
                                             {book.status}
                                         </p>
                                     </li>
@@ -66,9 +93,9 @@ function RegistBorrowBook() {
                     ))}
                     <li className="li-contain-cell-box-footer">
                         <div className="list-regist-li-check">
-                            <input type="checkbox" 
-                            checked={selectAll}
-                            onChange={handleSelectAll}/>
+                            <input type="checkbox"
+                                checked={selectAll}
+                                onChange={handleSelectAll} />
                         </div>
                         <div className="regist-footer-selectAll">
                             Chọn tất cả
@@ -77,7 +104,8 @@ function RegistBorrowBook() {
                             Xóa
                         </div>
                         <div className="regist-footer-right">
-                            <button className="regist-footer-right-button">
+                            <button className="regist-footer-right-button"
+                                onClick={() => handleOnclick()}>
                                 Mượn sách
                             </button>
                         </div>

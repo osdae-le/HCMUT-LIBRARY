@@ -1,9 +1,11 @@
 import './borrow.css';
 import { BookBorrow } from './data.jsx';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {getEBorrow} from '../../services/userService.js';
 
-function BorrowBook() {
+function BorrowBook(props) {
     const [selectAll, setSelectAll] = useState(false);
+    const [bookHistory, setBookHistory] = useState([]); // State để lưu lịch sử mượn sách
     const [selectedBooks, setSelectedBooks] = useState([]);
 
     const handleSelectAll = () => {
@@ -20,6 +22,34 @@ function BorrowBook() {
         );
     };
 
+    useEffect(() => {
+        // Hàm async để lấy và xử lý dữ liệu
+        const fetchHistory = async () => {
+            try {
+                let userData = props.getStateFromParent();
+                userData = userData.user;
+                const response = await getEBorrow(userData.id); // Gọi API lấy dữ liệu
+                const formattedData = response?.eborrow?.data.map(item => ({
+                    img: item.book.img, // Ảnh bìa sách
+                    Bname: item.book.bookName, // Tên sách
+                    author: item.book.author, // Tác giả
+                    BId: item.id, // ID mượn
+                    borrowDate: new Date(item.borrowDate).toLocaleDateString('vi-VN'), // Định dạng ngày mượn
+                    returnDate: new Date(item.returnDate).toLocaleDateString('vi-VN'), // Định dạng ngày hết hạn
+                    status: item.status === 'Borrowed' ? 'Chưa hoàn trả' : 
+                            item.status === 'Overdue' ? 'Quá hạn' : 'Đã hoàn trả', // Trạng thái
+                    amount: 1, // Giả sử mỗi lần mượn chỉ 1 cuốn
+                }));
+
+                setBookHistory(formattedData); // Cập nhật dữ liệu đã định dạng vào state
+            } catch (error) {
+                console.error("Lỗi khi tải dữ liệu:", error); // In ra lỗi nếu có
+            }
+        };
+
+        fetchHistory(); // Gọi hàm async để tải và xử lý dữ liệu
+        console.log(bookHistory);
+    }, []); // Mảng phụ thuộc rỗng để chỉ chạy một lần khi component được render lần đầu
     return (
         <div className="right-under-nav">
             <div className="empty"></div>

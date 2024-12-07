@@ -71,7 +71,7 @@ CREATE TABLE `books` (
 -- Table structure for table `bookcopy`
 --
 
-CREATE TABLE `bookcopy` (
+CREATE TABLE `bookcopies` (
   `id` int(11) NOT NULL,
   `bookId` int(11) NOT NULL,
   `copyNumber` int(11) NOT NULL,
@@ -87,7 +87,7 @@ DELIMITER $$
 CREATE TRIGGER `afterInsertBook` AFTER INSERT ON `books` FOR EACH ROW BEGIN
   DECLARE i INT DEFAULT 1;
   WHILE i <= NEW.quantity DO
-    INSERT INTO `bookCopy` (`bookId`, `copyNumber`, `status`, `createdAt`, `updatedAt`)
+    INSERT INTO `bookcopies` (`bookId`, `copyNumber`, `status`, `createdAt`, `updatedAt`)
     VALUES (NEW.id, i, 'Available', NOW(), NOW());
     SET i = i + 1;
   END WHILE;
@@ -98,12 +98,13 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `borrowtransaction`
+-- Table structure for table `eBorrow`
 --
 
-CREATE TABLE `borrowtransaction` (
+CREATE TABLE `eBorrows` (
   `id` int(11) NOT NULL,
   `userId` int(11) NOT NULL,
+  `bookId` int(11) NOT NULL,
   `bookCopyId` int(11) NOT NULL,
   `borrowDate` datetime NOT NULL DEFAULT current_timestamp(),
   `returnDate` datetime DEFAULT NULL,
@@ -113,6 +114,36 @@ CREATE TABLE `borrowtransaction` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
+--
+-- Triggers `book_copies`
+--
+DELIMITER $$
+CREATE TRIGGER `afterInsertEBorrow` 
+AFTER INSERT ON `eBorrows` 
+FOR EACH ROW 
+BEGIN
+    UPDATE `bookcopies`
+    SET `status` = "Borrowed"
+    WHERE `id` = NEW.bookCopyId; -- Tham chiếu đến bản sao sách được mượn
+END
+$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER `afterUpdateEBorrowStatus`
+AFTER UPDATE ON `eBorrows`
+FOR EACH ROW
+BEGIN
+    -- Kiểm tra nếu status được cập nhật thành "Returned"
+    IF NEW.status = "Returned" THEN
+        -- Cập nhật trạng thái bản sao sách thành "Available"
+        UPDATE `bookcopies`
+        SET `status` = "Available"
+        WHERE `id` = NEW.bookCopyId;
+    END IF;
+END
+$$
+DELIMITER ;
 
 --
 -- Table structure for table `sequelizemeta`
@@ -139,7 +170,7 @@ INSERT INTO `sequelizemeta` (`name`) VALUES
 --
 -- Indexes for table `bookcopy`
 --
-ALTER TABLE `bookcopy`
+ALTER TABLE `bookcopies`
   ADD PRIMARY KEY (`id`),
   ADD KEY `bookId` (`bookId`);
 
@@ -150,11 +181,12 @@ ALTER TABLE `books`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `borrowtransaction`
+-- Indexes for table `eBorrow`
 --
-ALTER TABLE `borrowtransaction`
+ALTER TABLE `eBorrows`
   ADD PRIMARY KEY (`id`),
   ADD KEY `userId` (`userId`),
+  ADD KEY `bookId` (`bookId`),
   ADD KEY `bookCopyId` (`bookCopyId`);
 
 --
@@ -175,9 +207,9 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `bookcopy`
+-- AUTO_INCREMENT for table `bookcopies`
 --
-ALTER TABLE `bookcopy`
+ALTER TABLE `bookcopies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
 
 --
@@ -187,9 +219,9 @@ ALTER TABLE `books`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=984;
 
 --
--- AUTO_INCREMENT for table `borrowtransaction`
+-- AUTO_INCREMENT for table `eBorrow`
 --
-ALTER TABLE `borrowtransaction`
+ALTER TABLE `eBorrows`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -205,15 +237,16 @@ ALTER TABLE `users`
 --
 -- Constraints for table `bookcopy`
 --
-ALTER TABLE `bookcopy`
+ALTER TABLE `bookcopies`
   ADD CONSTRAINT `bookcopy_ibfk_1` FOREIGN KEY (`bookId`) REFERENCES `books` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `borrowtransaction`
+-- Constraints for table `eBorrow`
 --
-ALTER TABLE `borrowtransaction`
-  ADD CONSTRAINT `borrowtransaction_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `borrowtransaction_ibfk_2` FOREIGN KEY (`bookCopyId`) REFERENCES `bookcopy` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `eBorrows`
+  ADD CONSTRAINT `eBorrow_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eBorrow_ibfk_2` FOREIGN KEY (`bookId`) REFERENCES `books` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `eBorrow_ibfk_3` FOREIGN KEY (`bookCopyId`) REFERENCES `bookcopies` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 
@@ -234,6 +267,16 @@ INSERT INTO `books` (`id`, `bookName`, `author`, `datePublish`, `genre`, `descri
 (982, 'Giáo trình Nhập môn bảo đảm và an ninh thông tin', 'Nguyễn Tấn Cầm', '2022', 'Công Nghệ Thông Tin', 'Trong Giáo trình Nhập môn bảo đảm và an ninh thông tin, Tác giả trình bày các kiến thức cơ bản liên quan đến các phương pháp tấn công và bảo vệ an toàn thông tin.', 5, 'https://images.vnuhcmpress.edu.vn/Picture/2023/10/27/image-20231027095022959.jpg', 'Available', '2024-12-03 17:02:44', '2024-12-03 17:02:44'),
 (983, 'Giáo trình Viễn thám', 'Lê Văn Trung', '2017', 'Công Nghệ Thông Tin', 'Để nhanh chóng phát triển công nghệ vũ trụ đáp ứng được các nhu cầu phát triển kinh tế của đất nước, ngày 14/06/2006 Thủ tướng đã phê duyệt “Chiến lược nghiên cứu và ứng dụng công nghệ vũ trụ Việt Nam đến năm 2020”. Bộ Khoa học và Công nghệ đã phối hợp với các bộ, ngành có liên quan xây dựng đề án “Kế hoạch tổng thể về ứng dụng và phát triển công nghệ viễn thám ở Việt Nam”. Ngày 7/5/2013, vệ tinh VNREDSat–1 (Vietnam Natural Resources, Environment and Disaster-monitoring Satellite) đã được phóng thành công, góp phần chủ động cung cấp ảnh vệ tinh phục vụ công tác lý tài nguyên thiên nhiên, bảo vệ môi trường và giảm thiểu thiên tai. ', 10, 'https://images.vnuhcmpress.edu.vn/Picture/2023/2015-06-11-08-39-56_image001.jpg', 'Available', '2024-12-03 17:05:07', '2024-12-03 17:05:07');
 
+--
+-- Dumping data for table `eBorrow`
+--
+INSERT INTO eborrows (id, userId, bookId, bookCopyId, borrowDate, returnDate, status, createdAt, updatedAt)
+VALUES
+    (22, 1302073, 973, 302, '2024-12-02', '2024-12-07', 'Borrowed', '2024-12-02 11:00:00', '2024-12-07 10:00:00'),
+    (23, 1302073, 974, 332, '2024-12-01', '2024-12-05', 'Returned', '2024-12-01 11:00:00', '2024-12-05 14:00:00'),
+    (24, 2318399, 975, 382, '2024-12-01', '2024-12-10', 'Borrowed', '2024-12-01 08:00:00', '2024-12-06 14:00:00'),
+    (25, 2318399, 976, 432, '2024-12-01', '2024-12-07', 'Borrowed', '2024-12-01 09:00:00', '2024-12-07 10:00:00'),
+    (26, 2318399, 977, 442, '2024-12-01', '2024-12-05', 'Overdue', '2024-12-01 12:30:00', '2024-12-05 15:30:00');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

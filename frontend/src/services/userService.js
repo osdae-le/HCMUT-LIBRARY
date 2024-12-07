@@ -5,4 +5,7 @@ const handleLogin = (email, password) => {
 const getAllBooks = () => {
   return axios.get("api/get-all-books");
 };
-export { handleLogin, getAllBooks };
+const getEBorrow = (userId) => {
+  return axios.get(`/api/get-eborrow/${userId}`);
+};
+export { handleLogin, getAllBooks, getEBorrow };

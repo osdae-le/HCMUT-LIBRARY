@@ -60,9 +60,9 @@ function User(props) {
       {shouldShowNavbar && <TopNavbar />}
       {shouldShowNavbar && <HomepageUser />}
       <Routes>
-        <Route path="/regist" element={<RegistBorrowBook />} />
-        <Route path="/history" element={<HistoryBookBorrow />} />
-        <Route path="/borrow" element={<BorrowBook />} />
+        <Route path="/regist" element={<RegistBorrowBook getStateFromParent={props.getStateFromParent} />} />
+        <Route path="/history" element={<HistoryBookBorrow getStateFromParent={props.getStateFromParent} />} />
+        <Route path="/borrow" element={<BorrowBook getStateFromParent={props.getStateFromParent} />} />
         <Route
           path="/information"
           element={<InfoUser getStateFromParent={props.getStateFromParent} />}

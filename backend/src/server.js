@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 viewEngine(app);
 initWebRoutes(app);
 //connectDB();
-let port = process.env.PORT;
+let port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log("Backend Nodejs is running on port: " + port);
 });

@@ -1,30 +1,69 @@
 import "./homepage.css";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getAllBooks } from "../../services/userService.js";
+import { clearSearchResult } from "../../redux/authSlice.js";
 function HomepageUser() {
   const [selectedGenre, setSelectedGenre] = useState("");
-  const [bookData, setBookData] = useState([]); // Khởi tạo state với mảng rỗng
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Hàm bất đồng bộ để lấy dữ liệu
-    const fetchData = async () => {
-      try {
-        const books = await getAllBooks(); // Gọi API
-        setBookData(books.books); // Lưu dữ liệu vào state
-      } catch (error) {
-        console.error("Lỗi khi tải dữ liệu:", error);
-      } finally {
-        setLoading(false); // Tắt trạng thái loading
+  const [yearInput, setYearInput] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("");
+  const bookData = useSelector((state) => state.auth.book?.bookList);
+  let bookDataCopy = bookData;
+  const searchResult = useSelector((state) => state.auth.book?.searchResult);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const dispatch = useDispatch();
+  if (searchResult !== "") {
+    bookDataCopy = bookDataCopy.filter((book) =>
+      book.bookName.toLowerCase().includes(searchResult.toLowerCase())
+    );
+  }
+  const searchOnFilter = () => {
+    dispatch(clearSearchResult());
+    if (selectedGenre === "all" || selectedGenre === "") {
+      console.log("selected genre", selectedGenre);
+      bookDataCopy = bookData;
+      if (yearInput !== "") {
+        console.log("year input", yearInput);
+        bookDataCopy = bookDataCopy.filter(
+          (book) => book.datePublish === Number(yearInput)
+        );
       }
-    };
-
-    fetchData(); // Gọi hàm
-  }, []); // Chỉ chạy một lần sau khi component render
+      if (selectedStatus !== "") {
+        console.log("selected status", selectedStatus);
+        bookDataCopy = bookDataCopy.filter(
+          (book) => book.status === selectedStatus
+        );
+      }
+    } else {
+      console.log("selected genre", selectedGenre);
+      bookDataCopy = bookData.filter((book) => book.genre === selectedGenre);
+      if (yearInput !== "") {
+        console.log("year input", yearInput);
+        bookDataCopy = bookDataCopy.filter(
+          (book) => book.datePublish === Number(yearInput)
+        );
+      }
+      if (selectedStatus !== "") {
+        console.log("selected status", selectedStatus);
+        bookDataCopy = bookDataCopy.filter(
+          (book) => book.status === selectedStatus
+        );
+      }
+    }
+  };
   const handleChange = (event) => {
     setSelectedGenre(event.target.value);
   };
-  //console.log("Book data: ", bookData.books);
+  const handleChange1 = (event) => {
+    setYearInput(event.target.value);
+  };
+  const handleChange2 = (event) => {
+    setSelectedStatus(event.target.value);
+  };
+  if (selectedGenre !== "" || yearInput !== "" || selectedStatus !== "")
+    searchOnFilter();
+  console.log("Book data copy: ", bookDataCopy);
+  console.log("Book data: ", bookData);
   const chunkData = (data, chunkSize) => {
     const chunks = [];
     for (let i = 0; i < data.length; i += chunkSize) {
@@ -33,9 +72,8 @@ function HomepageUser() {
     return chunks;
   };
 
-  const bookChunks = chunkData(bookData, 3);
+  const bookChunks = chunkData(bookDataCopy, 3);
 
-  const [selectedBook, setSelectedBook] = useState(null);
   const [selectedTd, setSelectedTd] = useState(null);
 
   const renderInfoBook = (book, tdElement) => {
@@ -69,18 +107,17 @@ function HomepageUser() {
                     name="genre"
                     aria-label="Chọn thể loại"
                     value={selectedGenre}
-                    onChange={handleChange}
+                    onChange={(e) => handleChange(e)}
                   >
-                    <option value="" disabled>
-                      Thể loại
-                    </option>
+                    <option value="">Thể loại</option>
+                    <option value="all">Tất cả</option>
                     <option value="fiction">Tiểu thuyết</option>
                     <option value="science">Khoa học</option>
+                    <option value="study">Học tập</option>
                     <option value="history">Lịch sử</option>
-                    <option value="biography">Tiểu sử</option>
                     <option value="fantasy">Giả tưởng</option>
                     <option value="adventure">Phiêu lưu</option>
-                    <option value="self-help">Tự lực</option>
+                    <option value="technology">Công nghệ</option>
                   </select>
                 </div>
               </th>
@@ -90,6 +127,7 @@ function HomepageUser() {
                     type="number"
                     placeholder="Năm"
                     className="table-search-ip"
+                    onChange={(e) => handleChange1(e)}
                   />
                 </div>
               </th>
@@ -106,12 +144,11 @@ function HomepageUser() {
                     id="table-search-status"
                     name="status"
                     aria-label="Tình trạng"
+                    onChange={(e) => handleChange2(e)}
                   >
-                    <option value="" disabled>
-                      Tình trạng
-                    </option>
-                    <option value="canBorrow">Có thể mượn</option>
-                    <option value="cannotBorrow">Không thể mượn</option>
+                    <option value="">Tình trạng</option>
+                    <option value="Available">Có thể mượn</option>
+                    <option value="Unavailable">Không thể mượn</option>
                   </select>
                 </div>
               </th>
@@ -128,7 +165,13 @@ function HomepageUser() {
                       className="image-book column2"
                       onClick={(e) => renderInfoBook(book, e.currentTarget)}
                     />
-                    <div style={{ display: "flex", textAlign: "center" }}>
+                    <div
+                      style={{
+                        textAlign: "center",
+                        width: "270px",
+                        marginBottom: "15px",
+                      }}
+                    >
                       {book.bookName}
                     </div>
                   </td>
@@ -192,11 +235,13 @@ function HomepageUser() {
                 cursor:
                   selectedBook.status !== "Available" ? "unset" : "pointer",
               }}
+              onClick={() => {
+                setSelectedBook(null);
+              }}
             >
-              Mượn sách
+              Đóng
             </button>
           </div>
-
         )}
       </div>
     </>
@@ -204,4 +249,3 @@ function HomepageUser() {
 }
 
 export default HomepageUser;
-

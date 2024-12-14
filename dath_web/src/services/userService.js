@@ -5,4 +5,10 @@ const handleLogin = (email, password) => {
 const getAllBooks = () => {
   return axios.get("api/get-all-books");
 };
-export { handleLogin, getAllBooks };
+const getAllBorrow = (id) => {
+  return axios.get(`api/get-all-borrow/${id}`);
+};
+const getAllHistory = (id) => {
+  return axios.get(`api/get-all-history/${id}`);
+};
+export { handleLogin, getAllBooks, getAllBorrow, getAllHistory };

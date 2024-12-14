@@ -2,13 +2,16 @@ import "./login.css";
 import { Link, Navigate } from "react-router-dom";
 import React, { useState } from "react";
 import { handleLogin } from "../services/userService";
-function LoginInterface(props) {
+import { loginSuccess } from "../redux/authSlice";
+import { useDispatch } from "react-redux";
+function LoginInterface() {
   const [state, setState] = useState({
     username: "",
     password: "",
     invalid: false,
     errMessage: "",
   });
+  const dispatch = useDispatch();
   function handleOnChangeUsername(e) {
     setState({
       ...state,
@@ -38,9 +41,10 @@ function LoginInterface(props) {
           invalid: true,
           errMessage: data.message,
         });
+        return;
       }
       if (data && data.errCode === 0) {
-        props.loginSuccess(data.user);
+        dispatch(loginSuccess(data.user));
         setState({
           username: "",
           password: "",
@@ -66,7 +70,7 @@ function LoginInterface(props) {
                 className="login_left_img"
               />
             </div>
-            <p className="login_left_name">THƯ VIỆN BK</p>
+            <p className="login_left_name">HCMUT LIBRARY</p>
           </div>
           <div className="login_right">
             <p>Đăng nhập</p>

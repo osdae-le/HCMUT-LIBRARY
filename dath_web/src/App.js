@@ -5,7 +5,14 @@ import HomepageUser from "./NguoiDung/TrangChuNguoiDung/homepage.jsx";
 import RegistBorrowBook from "./NguoiDung/DangKyMuon/regist.jsx";
 import HistoryBookBorrow from "./NguoiDung/LichSuMuonSach/history.jsx";
 import BorrowBook from "./NguoiDung/MuonSach/borrow.jsx";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setBookList,
+  setSearchResult,
+  clearSearchResult,
+} from "./redux/authSlice.js";
+import { getAllBooks } from "./services/userService.js";
 import {
   BrowserRouter as Router,
   Routes,
@@ -28,14 +35,30 @@ import BookReturnConfirm from "./NhanVien/components/BookReturnConfirm.jsx";
 import OverdueNotice from "./NhanVien/components/OverdueNotice.jsx";
 import PersonalInfo from "./NhanVien/components/PersonalInfo.jsx";
 
-function User(props) {
+function User() {
   const location = useLocation();
+  const user = useSelector((state) => state.auth.login?.currentUser);
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // Hàm bất đồng bộ để lấy dữ liệu
+    const fetchData = async () => {
+      try {
+        const books = await getAllBooks(); // Gọi API
+        dispatch(setBookList(books.books)); // Lưu dữ liệu vào state
+      } catch (error) {
+        console.error("Lỗi khi tải dữ liệu:", error);
+      } finally {
+        setLoading(false); // Tắt trạng thái loading
+      }
+    };
+    fetchData(); // Gọi hàm
+  }, []);
 
-  // Các route cần ẩn Navbar
+  //Các route cần ẩn Navbar
   const hideNavbarRoutes = ["/login", "/logout"];
 
   const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
-  const [state, setState] = useState(props.getStateFromParent);
   return (
     <>
       {/* <LoginInterface/> */}
@@ -50,41 +73,27 @@ function User(props) {
             )
           }
         /> */}
-        <Route
-          path="/"
-          exact
-          element={state.isLoggedIn ? <HomepageUser /> : <LoginInterface />}
-        />
+        <Route path="/" exact element={<HomepageUser />} />
       </Routes>
-      {shouldShowNavbar && <LeftNavbar setStateLogOut={props.setStateLogOut} />}
+      {shouldShowNavbar && <LeftNavbar />}
       {shouldShowNavbar && <TopNavbar />}
-      {shouldShowNavbar && <HomepageUser />}
       <Routes>
         <Route path="/regist" element={<RegistBorrowBook />} />
         <Route path="/history" element={<HistoryBookBorrow />} />
         <Route path="/borrow" element={<BorrowBook />} />
-        <Route
-          path="/information"
-          element={<InfoUser getStateFromParent={props.getStateFromParent} />}
-        />
+        <Route path="/information" element={<InfoUser />} />
       </Routes>
     </>
   );
 }
 
-function Employee(props) {
-  const [state, setState] = useState(props.getStateFromParent);
+function Employee() {
   return (
     <>
-      <Header passState={state} setStateLogOut={props.setStateLogOut} />{" "}
-      {/* Header luôn hiển thị trên mọi trang */}
+      <Header /> {/* Header luôn hiển thị trên mọi trang */}
       <Routes>
         {/* Định nghĩa đường dẫn gốc hiển thị trang chủ */}
-        <Route
-          path="/"
-          exact
-          element={state.isLoggedIn ? <HomePage /> : <LoginInterface />}
-        />
+        <Route path="/" exact element={<HomePage />} />
         <Route path="/manage-docs" element={<ManageDocs />} />
         <Route path="/docs-detail" element={<DocsDetail />} />
         <Route path="/add-document" element={<AddDocument />} />
@@ -94,51 +103,20 @@ function Employee(props) {
         <Route path="/book-return" element={<BookReturnConfirm />} />
         <Route path="/overdue-notice" element={<OverdueNotice />} />
 
-        <Route
-          path="/personal-info"
-          element={<PersonalInfo passState={state} />}
-        />
+        <Route path="/personal-info" element={<PersonalInfo />} />
       </Routes>
     </>
   );
 }
 
 function App() {
-  const [state, setState] = useState({
-    user: null,
-    isLoggedIn: false,
-  });
-  function loginSuccess(data) {
-    console.log(data);
-    setState({
-      user: data,
-      isLoggedIn: true,
-    });
-  }
-  function getStateFromParent() {
-    return state;
-  }
-  function setStateLogOut() {
-    setState({
-      user: null,
-      isLoggedIn: false,
-    });
-  }
+  const user = useSelector((state) => state.auth.login?.currentUser);
+  console.log("User: ", user);
   return (
     <Router>
-      {state.isLoggedIn && state.user.role === "Student" && (
-        <User
-          getStateFromParent={getStateFromParent}
-          setStateLogOut={setStateLogOut}
-        />
-      )}
-      {state.isLoggedIn && state.user.role === "Staff" && (
-        <Employee
-          getStateFromParent={getStateFromParent}
-          setStateLogOut={setStateLogOut}
-        />
-      )}
-      {!state.isLoggedIn && <LoginInterface loginSuccess={loginSuccess} />}
+      {user && user.role === "Student" && <User />}
+      {user && user.role === "Staff" && <Employee />}
+      {!user && <LoginInterface />}
     </Router>
   );
 }

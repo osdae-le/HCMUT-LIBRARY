@@ -10,10 +10,11 @@ import user2 from "../assets/img/emp_negav.webp";
 import user3 from "../assets/img/emp_hurrykng.webp";
 import user4 from "../assets/img/emp_manbo.webp";
 import user5 from "../assets/img/emp_kewtiie.webp";
-
-const Header = (props) => {
+import { useDispatch } from "react-redux";
+import { logOutSuccess } from "../../redux/authSlice";
+const Header = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [notificationVisible, setNotificationVisible] = useState(false);
   const [messageVisible, setMessageVisible] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -156,8 +157,8 @@ const Header = (props) => {
                 href="#"
                 onClick={(e) => {
                   e.preventDefault();
+                  dispatch(logOutSuccess());
                   handleNavigation("/");
-                  props.setStateLogOut();
                 }}
               >
                 Đăng xuất

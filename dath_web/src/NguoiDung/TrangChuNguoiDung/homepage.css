@@ -4,10 +4,10 @@
   display: flex;
   flex-direction: row;
   position: absolute;
-  top: 92px;
+  top: 72px;
   right: 0;
   background-color: #e9ecf2;
-  min-height: calc(100vh - 92px);
+  min-height: calc(100vh - 72px);
 }
 
 .in_homepage {
@@ -58,7 +58,7 @@
 .image-book {
   height: 280px;
   border-radius: 10px;
-  width: 200px;
+  width: 230px;
   box-sizing: border-box;
 }
 
@@ -115,12 +115,11 @@
   color: #fff;
   margin: 0 auto; /* Căn giữa nút */
   position: absolute; /* Vẫn giữ nút cố định ở cuối */
-  bottom: 20px; /* Khoảng cách từ dưới cùng của thẻ */
+  bottom: 80px; /* Khoảng cách từ dưới cùng của thẻ */
   left: 50%; /* Đặt nút ở giữa */
   transform: translateX(-50%);
   cursor: pointer;
 }
-
 
 #info-of-book__button:hover {
   background-color: #0a8bcb;

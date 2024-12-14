@@ -1,7 +1,9 @@
 import "./leftNav.css";
 import { Link } from "react-router-dom";
-
-function LeftNavbar(props) {
+import { useDispatch } from "react-redux";
+import { logOutSuccess } from "../../../redux/authSlice";
+function LeftNavbar() {
+  const dispatch = useDispatch();
   return (
     <>
       <div className="left-nav-contain-navi">
@@ -66,7 +68,7 @@ function LeftNavbar(props) {
         <div
           className="contain_log_out"
           onClick={() => {
-            props.setStateLogOut();
+            dispatch(logOutSuccess());
           }}
         >
           <Link to="/" className="log-out">

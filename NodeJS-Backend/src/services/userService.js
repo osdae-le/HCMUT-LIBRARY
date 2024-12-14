@@ -32,8 +32,33 @@ let handleGetAllBooks = () => {
   return new Promise(async (resolve, reject) => {
     try {
       let books = await db.Book.findAll({ raw: true });
-      console.log("Get all Books: ", books);
       resolve(books);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+let handleGetAllBorrow = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let borrow = await db.BookTransaction.findAll({
+        where: { userId: id, status: "Borrowed" },
+        raw: true,
+      });
+      resolve(borrow);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+let handleGetAllHistory = (id) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let borrow = await db.BookTransaction.findAll({
+        where: { userId: id },
+        raw: true,
+      });
+      resolve(borrow);
     } catch (error) {
       reject(error);
     }
@@ -42,4 +67,6 @@ let handleGetAllBooks = () => {
 module.exports = {
   handleUserLogin: handleUserLogin,
   handleGetAllBooks: handleGetAllBooks,
+  handleGetAllBorrow: handleGetAllBorrow,
+  handleGetAllHistory: handleGetAllHistory,
 };

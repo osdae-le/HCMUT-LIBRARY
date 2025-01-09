@@ -29,13 +29,13 @@ Check out the demo video to see the HCMUT Library presentation:
 [![Watch the video](https://i9.ytimg.com/vi/SM0qovYJr-0/maxresdefault.jpg?v=675d4c09&sqp=CPihgLwG&rs=AOn4CLAIezjlqQm5xkY1pAGtFatpYy8K_Q)](https://youtu.be/SM0qovYJr-0)
 
 ## Technologies Used
-Frontend: React.js
-Backend: Node.js
-Database: MySQL
+- Frontend: React.js
+- Backend: Node.js
+- Database: MySQL
 
 ## Contributors
-Lê Thị Hoàng Anh - 2210070\
-Hoàng Phương Bình - 2210305\
-Phan Phúc Lâm - 2211818\
-Huỳnh Cảnh Thịnh - 2213272\
-Nguyễn Duy Thức - 2213426
+- Lê Thị Hoàng Anh - 2210070
+- Hoàng Phương Bình - 2210305
+- Phan Phúc Lâm - 2211818
+- Huỳnh Cảnh Thịnh - 2213272
+- Nguyễn Duy Thức - 2213426

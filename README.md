@@ -1,13 +1,4 @@
 # HCMUT-LIBRARY 
-
-## Table of content
-1. [Overview](#overview)
-2. [Feature](#feature)
-3. [Demo](#demo)
-4. [Technologies Used](#technologiesused)
-5. [Contributors](#contributors)
-
-## Overview
 HCMUT Library is a web-based library management system designed to enhance the experience of students and staff at Ho Chi Minh City University of Technology (HCMUT). The platform aims to streamline book lending and book management through an efficient interface.
 
 ## Feature
